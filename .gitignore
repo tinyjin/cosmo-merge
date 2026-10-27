@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.expo/
+apps/mobile/ios/
+apps/mobile/android/
+apps/web/public/thorvg.wasm
+*.log
+.DS_Store
+.yarn/
+.pnp.*

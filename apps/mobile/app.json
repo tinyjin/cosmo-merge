@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Cosmo Merge",
+    "slug": "cosmo-merge",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#120a3a",
+    "ios": {
+      "bundleIdentifier": "org.thorvg.comet",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "org.thorvg.comet"
+    },
+    "web": {
+      "name": "Cosmo Merge",
+      "backgroundColor": "#120a3a"
+    }
+  }
+}

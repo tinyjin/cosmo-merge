@@ -1,0 +1,14 @@
+{
+  "name": "@comet/cosmo-merge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cosmo Merge: a drop-and-merge planet game on @comet/engine",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "@comet/engine": "*"
+  },
+  "devDependencies": {
+    "@thorvg/webcanvas": "~1.1.3"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@comet/engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A small retained-mode 2D game engine on the @thorvg/webcanvas API. No DOM or React Native APIs: hosts plug in the canvas, frames, input and device services.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "devDependencies": {
+    "@thorvg/webcanvas": "~1.1.3"
+  }
+}
