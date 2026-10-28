@@ -1,62 +1,71 @@
+<div align="center">
+
+<img src="docs/title.png" width="260" alt="Cosmo Merge title screen" />
+
 # Cosmo Merge
 
-A small 2D game engine on the [`@thorvg/webcanvas`](https://www.npmjs.com/package/@thorvg/webcanvas) API, and **Cosmo Merge**, a drop-and-merge planet game built on it.
+**Drop planets. Merge them. Make a Sun.**
 
-The engine and the game are plain TypeScript that only talk to the ThorVG API. The same source runs:
+A cozy, physics-y merge puzzle set in space, playable in the browser, on iOS and Android, and on desktop.
 
-| Host | ThorVG | Platforms |
-|---|---|---|
-| `apps/web` | `@thorvg/webcanvas` (WASM), no React | Browser |
-| `apps/mobile` | [`thorvg-react-native`](https://www.npmjs.com/package/thorvg-react-native) (native ThorVG over JSI, WASM on web) | iOS, Android, Web |
-| `apps/desktop` | `thorvg-canvas` (native ThorVG over Node-API, `sw`) in an [SDL](https://www.npmjs.com/package/@kmamal/sdl) window | macOS, Windows, Linux |
+</div>
 
-```
-packages/engine   @cosmo-merge/engine  scene graph, tweens, particles, input, buttons, game loop
-packages/game     @cosmo-merge/game    the game: planets, physics, title / play / results
-apps/web          pure WebCanvas host (Vite)
-apps/mobile       React Native host (Expo)
-apps/desktop      Node host: thorvg-canvas + SDL window, no browser engine
-```
+---
 
-## How it fits together
+<div align="center">
+  <img src="docs/gameplay.gif" width="300" alt="Cosmo Merge gameplay" />
+</div>
 
-A host gives the engine a ThorVG namespace, a canvas, a frame clock and optional device services:
+## How to play
 
-```ts
-interface Host {
-  TVG: TVG;                 // init() from webcanvas, or useThorVG() from thorvg-react-native
-  canvas: Canvas;
-  requestFrame(cb): number;
-  cancelFrame(id): void;
-  now(): number;
-  sound?: Sound;            // web: Web Audio synth
-  haptics?: Haptics;        // mobile: expo-haptics
-  storage?: Storage;        // web: localStorage
-}
-```
+1. **Aim.** Drag left and right to move the planet along the top of the jar.
+2. **Drop.** Let go and it falls in, bouncing and rolling into place.
+3. **Merge.** When two of the same planet touch, they fuse into the next, bigger one.
+4. **Don't overflow.** If planets stay above the rim too long, it's game over.
 
-The host then forwards size changes (`engine.resize`) and pointers (`engine.pointerDown/Move/Up`). Nothing else in the engine or the game knows which platform it is on.
+The **NEXT** badge in the corner shows what's coming, so plan a move ahead.
 
-## Engine notes
+## The road to the Sun
 
-- **Retained scene graph.** `Node` wraps one ThorVG paint. Setters only record changes. Once per frame, `Node.flush()` sends one `transform()` per moved node, and nodes that didn't move cost nothing. On React Native every paint call crosses JSI, so this keeps the per-frame call count proportional to what actually moves.
-- **No allocation mid-game.** Planet art is built once per tier and instanced with `duplicate()`. Particles come from a fixed pool and are recycled by toggling `visible`.
-- **Skip idle frames.** `canvas.update().render()` runs only when something changed.
-- **Letterboxing.** Games are laid out in design units (360×640 here) and scaled to fit. `engine.view` exposes the full visible area so backgrounds can bleed to the edges.
+Every merge climbs one step up the solar system:
 
-## Run
+> ☄️ Comet → 🌑 Moon → Mercury → 🔴 Mars → Venus → 🌍 Earth → 🔵 Neptune → Uranus → 🪐 Saturn → Jupiter → ☀️ **Sun**
+
+You only ever drop the small stuff (Comet up to Venus). Everything bigger has to be built. The first time you make Earth or anything above it, the game calls it out. And if you get two Suns to touch, they go **supernova** for a huge bonus and leave the jar a little emptier.
+
+<div align="center">
+  <img src="docs/earth.png" width="240" alt="First Earth" />
+  &nbsp;
+  <img src="docs/combo.png" width="240" alt="Combo chain" />
+  &nbsp;
+  <img src="docs/saturn.png" width="240" alt="Saturn" />
+</div>
+
+## Scoring
+
+- Each merge scores the value of the planet it makes. Bigger planets are worth much more.
+- **Combos.** Merges that land within about a second of each other chain up to **x5**. A drop that sets off a cascade is where the big scores come from.
+- **Supernova.** Two Suns merging is worth 500 × your current combo.
+- Your best score is saved between runs.
+
+## Feel
+
+Planets have little faces and roll as they move. Merges burst into particles and rings, big ones shake the screen, and every drop and merge has its own sound (and haptics on phones). The rim glows and flashes as the jar gets close to overflowing, so you always get a warning.
+
+## Play it
 
 ```sh
 yarn
-yarn web              # pure WebCanvas, http://localhost:5173 (?renderer=sw|gl|wg)
-yarn ios              # React Native on iOS (renderer: sw)
-yarn android          # React Native on Android (renderer: gl)
-yarn mobile:web       # React Native for Web
-yarn desktop          # Node + SDL window (renderer: sw)
+yarn web              # browser, http://localhost:5173
+yarn ios              # iOS
+yarn android          # Android
+yarn desktop          # desktop window (macOS, Windows, Linux)
 ```
 
-## Cosmo Merge
+Add `?autoplay` to the web URL to watch the game play itself.
 
-Drag to aim and release to drop. When two planets of the same kind touch, they merge into the next one: Comet → Moon → Mercury → Mars → Venus → Earth → Neptune → Uranus → Saturn → Jupiter → Sun. Two Suns go supernova. Quick merges chain into combos. The game ends when planets stay above the rim.
+## Built with
 
-The font is Fredoka (SIL Open Font License), embedded as base64 so every host loads it the same way.
+- [`@thorvg/webcanvas`](https://www.npmjs.com/package/@thorvg/webcanvas) for rendering on the web
+- [`thorvg-react-native`](https://www.npmjs.com/package/thorvg-react-native) on iOS and Android
+- [`thorvg-canvas`](https://www.npmjs.com/package/thorvg-canvas)  on desktop with SDL3
