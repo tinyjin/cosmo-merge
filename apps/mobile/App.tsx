@@ -42,7 +42,7 @@ export default function App() {
       now: () => performance.now(),
       haptics: { impact: (kind) => void impact(kind)?.catch(() => {}) },
       storage: { get: (k) => memory.get(k) ?? null, set: (k, v) => void memory.set(k, v) },
-      label: `RN ${Platform.OS} · ${(canvas as { renderer?: string }).renderer ?? renderer}`,
+      label: `RN ${Platform.OS} · ${canvas.renderer}`,
     };
     engine.current = startCosmoMerge(host, size, { autoplay: process.env.EXPO_PUBLIC_AUTOPLAY === '1' });
     return () => {

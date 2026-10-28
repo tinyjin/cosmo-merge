@@ -8,12 +8,14 @@ The engine and the game are plain TypeScript that only talk to the ThorVG API. T
 |---|---|---|
 | `apps/web` | `@thorvg/webcanvas` (WASM), no React | Browser |
 | `apps/mobile` | [`thorvg-react-native`](https://www.npmjs.com/package/thorvg-react-native) (native ThorVG over JSI, WASM on web) | iOS, Android, Web |
+| `apps/desktop` | `thorvg-canvas` (native ThorVG over Node-API, `sw`) in an [SDL](https://www.npmjs.com/package/@kmamal/sdl) window | macOS, Windows, Linux |
 
 ```
 packages/engine        @comet/engine       scene graph, tweens, particles, input, buttons, game loop
 packages/cosmo-merge   @comet/cosmo-merge  the game: planets, physics, title / play / results
 apps/web               pure WebCanvas host (Vite)
 apps/mobile            React Native host (Expo)
+apps/desktop           Node host: thorvg-canvas + SDL window, no browser engine
 ```
 
 ## How it fits together
@@ -50,6 +52,7 @@ yarn web              # pure WebCanvas, http://localhost:5173 (?renderer=sw|gl|w
 yarn ios              # React Native on iOS (renderer: sw)
 yarn android          # React Native on Android (renderer: gl)
 yarn mobile:web       # React Native for Web
+yarn desktop          # Node + SDL window (renderer: sw)
 ```
 
 ## Cosmo Merge

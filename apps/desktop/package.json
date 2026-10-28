@@ -1,0 +1,21 @@
+{
+  "name": "@comet/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --platform=node --format=esm --target=node20 --external:thorvg-canvas --external:@kmamal/sdl --outfile=dist/main.js",
+    "start": "yarn build && node dist/main.js"
+  },
+  "dependencies": {
+    "@comet/cosmo-merge": "workspace:*",
+    "@comet/engine": "workspace:*",
+    "@kmamal/sdl": "^0.11.13",
+    "thorvg-canvas": "~0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.3"
+  }
+}
