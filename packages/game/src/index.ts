@@ -1,4 +1,4 @@
-import { Engine, decodeBase64, type Host, type TVG } from '@comet/engine';
+import { Engine, decodeBase64, type Host, type TVG } from '@cosmo-merge/engine';
 import { FONT_BASE64, FONT_NAME } from './assets/font';
 import { PlayScreen } from './play';
 import { screens, settings } from './shared';

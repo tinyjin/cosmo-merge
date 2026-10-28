@@ -3,8 +3,8 @@ import { Platform, StyleSheet, View, type GestureResponderEvent, type LayoutChan
 import { StatusBar } from 'expo-status-bar';
 import * as Haptics from 'expo-haptics';
 import { Canvas, useThorVG } from 'thorvg-react-native';
-import type { Engine, HapticKind, Host } from '@comet/engine';
-import { startCosmoMerge } from '@comet/cosmo-merge';
+import type { Engine, HapticKind, Host } from '@cosmo-merge/engine';
+import { startCosmoMerge } from '@cosmo-merge/game';
 
 // iOS uses 'sw': the WebGPU path still has a teardown bug when a canvas is recreated.
 const renderer = Platform.OS === 'ios' ? 'sw' : 'gl';

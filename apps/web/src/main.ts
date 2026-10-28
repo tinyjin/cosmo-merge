@@ -1,6 +1,6 @@
 import { init, type RendererType } from '@thorvg/webcanvas';
-import type { Host } from '@comet/engine';
-import { startCosmoMerge } from '@comet/cosmo-merge';
+import type { Host } from '@cosmo-merge/engine';
+import { startCosmoMerge } from '@cosmo-merge/game';
 import { WebSound } from './sound';
 
 // Pure browser host: @thorvg/webcanvas only, no React, no React Native.

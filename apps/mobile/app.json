@@ -7,11 +7,11 @@
     "userInterfaceStyle": "dark",
     "backgroundColor": "#120a3a",
     "ios": {
-      "bundleIdentifier": "org.thorvg.comet",
+      "bundleIdentifier": "com.cosmomerge.app",
       "supportsTablet": true
     },
     "android": {
-      "package": "org.thorvg.comet"
+      "package": "com.cosmomerge.app"
     },
     "web": {
       "name": "Cosmo Merge",

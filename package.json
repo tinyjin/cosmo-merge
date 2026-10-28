@@ -1,5 +1,5 @@
 {
-  "name": "thorvg-comet",
+  "name": "cosmo-merge",
   "private": true,
   "version": "0.1.0",
   "description": "A tiny 2D game engine on the @thorvg/webcanvas API, with one game that runs on iOS, Android, the web and desktop",
@@ -8,13 +8,13 @@
     "apps/*"
   ],
   "scripts": {
-    "web": "yarn workspace @comet/web dev",
-    "web:build": "yarn workspace @comet/web build",
-    "ios": "yarn workspace @comet/mobile ios",
-    "android": "yarn workspace @comet/mobile android",
-    "mobile:web": "yarn workspace @comet/mobile web",
-    "desktop": "yarn workspace @comet/desktop start",
-    "typecheck": "tsc -p packages/engine && tsc -p packages/cosmo-merge && tsc -p apps/web && tsc -p apps/mobile && tsc -p apps/desktop"
+    "web": "yarn workspace @cosmo-merge/web dev",
+    "web:build": "yarn workspace @cosmo-merge/web build",
+    "ios": "yarn workspace @cosmo-merge/mobile ios",
+    "android": "yarn workspace @cosmo-merge/mobile android",
+    "mobile:web": "yarn workspace @cosmo-merge/mobile web",
+    "desktop": "yarn workspace @cosmo-merge/desktop start",
+    "typecheck": "tsc -p packages/engine && tsc -p packages/game && tsc -p apps/web && tsc -p apps/mobile && tsc -p apps/desktop"
   },
   "packageManager": "yarn@4.18.1",
   "devDependencies": {

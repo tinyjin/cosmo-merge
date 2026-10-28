@@ -3,8 +3,8 @@ import { homedir } from 'node:os';
 import { dirname, join } from 'node:path';
 import sdl from '@kmamal/sdl';
 import { init } from 'thorvg-canvas';
-import type { Host } from '@comet/engine';
-import { startCosmoMerge } from '@comet/cosmo-merge';
+import type { Host } from '@cosmo-merge/engine';
+import { startCosmoMerge } from '@cosmo-merge/game';
 
 // Native desktop host: thorvg-canvas (ThorVG over Node-API, sw) drawn into an SDL window. No browser engine.
 const autoplay = process.argv.includes('--autoplay');

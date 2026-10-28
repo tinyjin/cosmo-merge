@@ -1,4 +1,4 @@
-import { Ease, Node, Screen, rgba, type Label, type Rect } from '@comet/engine';
+import { Ease, Node, Screen, rgba, type Label, type Rect } from '@cosmo-merge/engine';
 import { TIERS } from './planets';
 import { BEST_KEY, Space, button, label, planets, screens } from './shared';
 
@@ -70,7 +70,7 @@ export class TitleScreen extends Screen {
     if (best > 0) layer.add(label(this, `BEST ${best}`, 16, { color: [255, 216, 74] })).setPosition(180, 568);
 
     const host = this.engine.host.label;
-    this.#footer = layer.add(label(this, `Rendered by ThorVG${host ? ` · ${host}` : ''}`, 12, { color: [190, 180, 240] }));
+    this.#footer = layer.add(label(this, host ?? '', 12, { color: [190, 180, 240] }));
     this.#footer.opacity = 0.75;
   }
 

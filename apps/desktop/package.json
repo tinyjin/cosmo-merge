@@ -1,5 +1,5 @@
 {
-  "name": "@comet/desktop",
+  "name": "@cosmo-merge/desktop",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -8,8 +8,8 @@
     "start": "yarn build && node dist/main.js"
   },
   "dependencies": {
-    "@comet/cosmo-merge": "workspace:*",
-    "@comet/engine": "workspace:*",
+    "@cosmo-merge/engine": "workspace:*",
+    "@cosmo-merge/game": "workspace:*",
     "@kmamal/sdl": "^0.11.13",
     "thorvg-canvas": "~0.1.0"
   },

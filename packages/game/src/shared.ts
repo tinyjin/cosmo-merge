@@ -1,4 +1,4 @@
-import { Button, Ease, Label, Node, rgba, type Engine, type LabelOptions, type Rect, type Screen } from '@comet/engine';
+import { Button, Ease, Label, Node, rgba, type Engine, type LabelOptions, type Rect, type Screen } from '@cosmo-merge/engine';
 import { FONT_NAME } from './assets/font';
 import { PlanetFactory } from './planets';
 

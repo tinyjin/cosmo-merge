@@ -1,4 +1,4 @@
-import { Node, rgba, type Draw, type Scene, type TVG } from '@comet/engine';
+import { Node, rgba, type Draw, type Scene, type TVG } from '@cosmo-merge/engine';
 
 export interface Tier {
   name: string;

@@ -1,5 +1,5 @@
 {
-  "name": "@comet/web",
+  "name": "@cosmo-merge/web",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,8 +11,8 @@
     "preview": "vite preview --host"
   },
   "dependencies": {
-    "@comet/cosmo-merge": "*",
-    "@comet/engine": "*",
+    "@cosmo-merge/engine": "*",
+    "@cosmo-merge/game": "*",
     "@thorvg/webcanvas": "~1.1.3"
   },
   "devDependencies": {

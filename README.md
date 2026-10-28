@@ -1,4 +1,4 @@
-# Comet
+# Cosmo Merge
 
 A small 2D game engine on the [`@thorvg/webcanvas`](https://www.npmjs.com/package/@thorvg/webcanvas) API, and **Cosmo Merge**, a drop-and-merge planet game built on it.
 
@@ -11,11 +11,11 @@ The engine and the game are plain TypeScript that only talk to the ThorVG API. T
 | `apps/desktop` | `thorvg-canvas` (native ThorVG over Node-API, `sw`) in an [SDL](https://www.npmjs.com/package/@kmamal/sdl) window | macOS, Windows, Linux |
 
 ```
-packages/engine        @comet/engine       scene graph, tweens, particles, input, buttons, game loop
-packages/cosmo-merge   @comet/cosmo-merge  the game: planets, physics, title / play / results
-apps/web               pure WebCanvas host (Vite)
-apps/mobile            React Native host (Expo)
-apps/desktop           Node host: thorvg-canvas + SDL window, no browser engine
+packages/engine   @cosmo-merge/engine  scene graph, tweens, particles, input, buttons, game loop
+packages/game     @cosmo-merge/game    the game: planets, physics, title / play / results
+apps/web          pure WebCanvas host (Vite)
+apps/mobile       React Native host (Expo)
+apps/desktop      Node host: thorvg-canvas + SDL window, no browser engine
 ```
 
 ## How it fits together

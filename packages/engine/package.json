@@ -1,5 +1,5 @@
 {
-  "name": "@comet/engine",
+  "name": "@cosmo-merge/engine",
   "version": "0.1.0",
   "private": true,
   "description": "A small retained-mode 2D game engine on the @thorvg/webcanvas API. No DOM or React Native APIs: hosts plug in the canvas, frames, input and device services.",

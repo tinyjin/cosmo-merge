@@ -1,4 +1,4 @@
-import type { Sound } from '@comet/engine';
+import type { Sound } from '@cosmo-merge/engine';
 
 /** Synthesized effects with Web Audio, so the game ships no audio files. */
 export class WebSound implements Sound {

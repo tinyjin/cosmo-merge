@@ -791,21 +791,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@comet/cosmo-merge@npm:*, @comet/cosmo-merge@workspace:*, @comet/cosmo-merge@workspace:packages/cosmo-merge":
+"@cosmo-merge/desktop@workspace:apps/desktop":
   version: 0.0.0-use.local
-  resolution: "@comet/cosmo-merge@workspace:packages/cosmo-merge"
+  resolution: "@cosmo-merge/desktop@workspace:apps/desktop"
   dependencies:
-    "@comet/engine": "npm:*"
-    "@thorvg/webcanvas": "npm:~1.1.3"
-  languageName: unknown
-  linkType: soft
-
-"@comet/desktop@workspace:apps/desktop":
-  version: 0.0.0-use.local
-  resolution: "@comet/desktop@workspace:apps/desktop"
-  dependencies:
-    "@comet/cosmo-merge": "workspace:*"
-    "@comet/engine": "workspace:*"
+    "@cosmo-merge/engine": "workspace:*"
+    "@cosmo-merge/game": "workspace:*"
     "@kmamal/sdl": "npm:^0.11.13"
     "@types/node": "npm:^24.0.0"
     esbuild: "npm:^0.25.0"
@@ -814,20 +805,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@comet/engine@npm:*, @comet/engine@workspace:*, @comet/engine@workspace:packages/engine":
+"@cosmo-merge/engine@npm:*, @cosmo-merge/engine@workspace:*, @cosmo-merge/engine@workspace:packages/engine":
   version: 0.0.0-use.local
-  resolution: "@comet/engine@workspace:packages/engine"
+  resolution: "@cosmo-merge/engine@workspace:packages/engine"
   dependencies:
     "@thorvg/webcanvas": "npm:~1.1.3"
   languageName: unknown
   linkType: soft
 
-"@comet/mobile@workspace:apps/mobile":
+"@cosmo-merge/game@npm:*, @cosmo-merge/game@workspace:*, @cosmo-merge/game@workspace:packages/game":
   version: 0.0.0-use.local
-  resolution: "@comet/mobile@workspace:apps/mobile"
+  resolution: "@cosmo-merge/game@workspace:packages/game"
   dependencies:
-    "@comet/cosmo-merge": "workspace:*"
-    "@comet/engine": "workspace:*"
+    "@cosmo-merge/engine": "npm:*"
+    "@thorvg/webcanvas": "npm:~1.1.3"
+  languageName: unknown
+  linkType: soft
+
+"@cosmo-merge/mobile@workspace:apps/mobile":
+  version: 0.0.0-use.local
+  resolution: "@cosmo-merge/mobile@workspace:apps/mobile"
+  dependencies:
+    "@cosmo-merge/engine": "workspace:*"
+    "@cosmo-merge/game": "workspace:*"
     "@expo/metro-runtime": "npm:~58.0.14"
     "@types/react": "npm:^19.2.0"
     expo: "npm:~58.0.17"
@@ -842,12 +842,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@comet/web@workspace:apps/web":
+"@cosmo-merge/web@workspace:apps/web":
   version: 0.0.0-use.local
-  resolution: "@comet/web@workspace:apps/web"
+  resolution: "@cosmo-merge/web@workspace:apps/web"
   dependencies:
-    "@comet/cosmo-merge": "npm:*"
-    "@comet/engine": "npm:*"
+    "@cosmo-merge/engine": "npm:*"
+    "@cosmo-merge/game": "npm:*"
     "@thorvg/webcanvas": "npm:~1.1.3"
     typescript: "npm:^5.9.3"
     vite: "npm:^7.1.12"
@@ -2945,6 +2945,17 @@ __metadata:
   checksum: 10c0/733fe5e8d4d5527ffb8ba8fbf815460d1275894387f68e923c3a6e4e7bedba5f8b3eb813ad3e18eeb3a3055094ca9de5c9b47fbf7acab173d5ed0bea6f2ec29a
   languageName: node
   linkType: hard
+
+"cosmo-merge@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "cosmo-merge@workspace:."
+  dependencies:
+    typescript: "npm:^5.9.3"
+  dependenciesMeta:
+    "@kmamal/sdl":
+      built: true
+  languageName: unknown
+  linkType: soft
 
 "cross-fetch@npm:^3.1.5":
   version: 3.2.0
@@ -5647,17 +5658,6 @@ __metadata:
   checksum: 10c0/a5183d671f2eb156d0257a6cbae07bcb3cee418bf8ce8ea169ce374494ca79dfd1a58cd4494e49be8598577bac0169d5b4adab559d1a956191fc077eb8dee162
   languageName: node
   linkType: hard
-
-"thorvg-comet@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "thorvg-comet@workspace:."
-  dependencies:
-    typescript: "npm:^5.9.3"
-  dependenciesMeta:
-    "@kmamal/sdl":
-      built: true
-  languageName: unknown
-  linkType: soft
 
 "thorvg-react-native@npm:~0.1.0":
   version: 0.1.0

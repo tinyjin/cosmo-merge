@@ -1,4 +1,4 @@
-import { Ease, Label, Node, Screen, clamp, rgba, type PointerEvent, type Rect, type Shape } from '@comet/engine';
+import { Ease, Label, Node, Screen, clamp, rgba, type PointerEvent, type Rect, type Shape } from '@cosmo-merge/engine';
 import { MAX_TIER, TIERS } from './planets';
 import { World, type Body } from './physics';
 import { BEST_KEY, Space, button, floatText, label, planets, screens, settings } from './shared';
