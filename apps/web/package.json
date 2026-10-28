@@ -4,10 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node scripts/copy-wasm.mjs",
-    "prebuild": "node scripts/copy-wasm.mjs",
-    "dev": "vite --host",
-    "build": "vite build",
+    "dev": "node scripts/copy-wasm.mjs && vite --host",
+    "build": "node scripts/copy-wasm.mjs && vite build",
     "preview": "vite preview --host"
   },
   "dependencies": {
