@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Platform, StyleSheet, View, type GestureResponderEvent, type LayoutChangeEvent } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import * as Haptics from 'expo-haptics';
+import { Platform, StatusBar, StyleSheet, View, type GestureResponderEvent, type LayoutChangeEvent } from 'react-native';
+import { trigger, type HapticFeedbackTypes } from 'react-native-haptic-feedback';
 import { Canvas, useThorVG } from 'thorvg-react-native';
 import type { Engine, HapticKind, Host } from '@cosmo-merge/engine';
 import { startCosmoMerge } from '@cosmo-merge/game';
@@ -11,16 +10,13 @@ const renderer = Platform.OS === 'ios' ? 'sw' : 'gl';
 
 const memory = new Map<string, string>();
 
-function impact(kind: HapticKind) {
-  if (Platform.OS === 'web') return;
-  switch (kind) {
-    case 'success': return Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    case 'error': return Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-    case 'heavy': return Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-    case 'medium': return Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    default: return Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-  }
-}
+const haptic: Record<HapticKind, keyof typeof HapticFeedbackTypes> = {
+  light: 'impactLight',
+  medium: 'impactMedium',
+  heavy: 'impactHeavy',
+  success: 'notificationSuccess',
+  error: 'notificationError',
+};
 
 // React Native host: the same game, fed by a ThorVG view, RN touches and native haptics.
 export default function App() {
@@ -40,11 +36,11 @@ export default function App() {
       requestFrame: (cb) => requestAnimationFrame(cb),
       cancelFrame: (id) => cancelAnimationFrame(id),
       now: () => performance.now(),
-      haptics: { impact: (kind) => void impact(kind)?.catch(() => {}) },
+      haptics: { impact: (kind) => trigger(haptic[kind]) },
       storage: { get: (k) => memory.get(k) ?? null, set: (k, v) => void memory.set(k, v) },
       label: `RN ${Platform.OS} · ${canvas.renderer}`,
     };
-    engine.current = startCosmoMerge(host, size, { autoplay: process.env.EXPO_PUBLIC_AUTOPLAY === '1' });
+    engine.current = startCosmoMerge(host, size);
     return () => {
       engine.current?.destroy();
       engine.current = null;
@@ -75,7 +71,7 @@ export default function App() {
       onResponderRelease={(e) => engine.current?.pointerUp(...at(e))}
       onResponderTerminate={(e) => engine.current?.pointerUp(...at(e))}
     >
-      <StatusBar style="light" />
+      <StatusBar barStyle="light-content" />
       {TVG && <Canvas ref={view} style={StyleSheet.absoluteFill} pointerEvents="none" />}
     </View>
   );

@@ -1,21 +1,4 @@
 {
-  "expo": {
-    "name": "Cosmo Merge",
-    "slug": "cosmo-merge",
-    "version": "0.1.0",
-    "orientation": "portrait",
-    "userInterfaceStyle": "dark",
-    "backgroundColor": "#120a3a",
-    "ios": {
-      "bundleIdentifier": "com.cosmomerge.app",
-      "supportsTablet": true
-    },
-    "android": {
-      "package": "com.cosmomerge.app"
-    },
-    "web": {
-      "name": "Cosmo Merge",
-      "backgroundColor": "#120a3a"
-    }
-  }
+  "name": "CosmoMerge",
+  "displayName": "Cosmo Merge"
 }
