@@ -69,8 +69,8 @@ export class TitleScreen extends Screen {
     tweens.to(play, { scale: 1.05 }, { duration: 0.8, yoyo: true, ease: Ease.inOutQuad });
     if (best > 0) layer.add(label(this, `BEST ${best}`, 16, { color: [255, 216, 74] })).setPosition(180, 568);
 
-    const host = this.engine.host.label;
-    this.#footer = layer.add(label(this, host ?? '', 12, { color: [190, 180, 240] }));
+    const { debug, label: host } = this.engine.host;
+    this.#footer = layer.add(label(this, debug ? host ?? '' : '', 12, { color: [190, 180, 240] }));
     this.#footer.opacity = 0.75;
   }
 

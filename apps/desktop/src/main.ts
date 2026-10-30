@@ -77,6 +77,7 @@ const host: Host = {
     },
   },
   label: `desktop · ${canvas.renderer} · ${pixelRatio}x`,
+  debug: process.env.NODE_ENV !== 'production',
 };
 
 const engine = startCosmoMerge(host, { width: window.width, height: window.height }, { autoplay });

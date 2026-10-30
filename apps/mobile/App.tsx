@@ -39,6 +39,7 @@ export default function App() {
       haptics: { impact: (kind) => trigger(haptic[kind]) },
       storage: { get: (k) => memory.get(k) ?? null, set: (k, v) => void memory.set(k, v) },
       label: `RN ${Platform.OS} · ${canvas.renderer}`,
+      debug: __DEV__,
     };
     engine.current = startCosmoMerge(host, size);
     return () => {

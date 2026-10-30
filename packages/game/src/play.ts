@@ -243,7 +243,7 @@ export class PlayScreen extends Screen {
     }
 
     this.#statsTimer -= dt;
-    if (this.#statsTimer <= 0) {
+    if (this.engine.host.debug && this.#statsTimer <= 0) {
       this.#statsTimer = 0.5;
       const s = this.engine.stats;
       const host = this.engine.host.label ? `${this.engine.host.label} · ` : '';

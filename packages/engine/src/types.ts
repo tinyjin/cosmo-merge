@@ -39,6 +39,8 @@ export interface Host {
   storage?: Storage;
   /** Shown in the stats overlay, e.g. "web · gl". */
   label?: string;
+  /** Show the stats overlay. Off in release builds. */
+  debug?: boolean;
 }
 
 export interface PointerEvent {

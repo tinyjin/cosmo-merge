@@ -38,6 +38,7 @@ const host: Host = {
     },
   },
   label: `webcanvas · ${renderer}`,
+  debug: import.meta.env.DEV,
 };
 
 const engine = startCosmoMerge(host, size(), { autoplay: params.has('autoplay') });
