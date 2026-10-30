@@ -1,6 +1,6 @@
 import type { Canvas, ThorVGNamespace } from '@thorvg/webcanvas';
 
-export type { Canvas, Paint, Scene, Shape, Text, Picture } from '@thorvg/webcanvas';
+export type { Canvas, LottieAnimation, Paint, Scene, Shape, Text, Picture } from '@thorvg/webcanvas';
 
 /**
  * The ThorVG namespace without `Canvas` (the host creates it) and `Video` (web only).

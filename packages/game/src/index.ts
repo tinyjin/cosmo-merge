@@ -1,5 +1,6 @@
 import { Engine, type Host } from '@cosmo-merge/engine';
 import { PlayScreen } from './play';
+import { SplashScreen } from './splash';
 import { loadFont, screens, settings } from './shared';
 import { TitleScreen } from './title';
 
@@ -21,6 +22,6 @@ export function startCosmoMerge(host: Host, view: { width: number; height: numbe
   settings.autoplay = options.autoplay ?? false;
   const engine = new Engine(host, DESIGN);
   engine.resize(view.width, view.height);
-  engine.start(settings.autoplay ? screens.play() : screens.title());
+  engine.start(settings.autoplay ? screens.play() : new SplashScreen());
   return engine;
 }
