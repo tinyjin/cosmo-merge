@@ -1,26 +1,32 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { init } from 'thorvg-canvas';
-import { drawIcon, type IconOptions } from '@cosmo-merge/game';
+import { init, type Paint } from 'thorvg-canvas';
+import { drawCard, drawIcon, type IconOptions } from '@cosmo-merge/game';
 
 // Renders every platform's app icon from the game's own art: `yarn icons`.
 const root = join(import.meta.dirname, '../../..');
 const TVG = await init();
 
-function png(file: string, size: number, options?: IconOptions & { round?: boolean }) {
-  const canvas = new TVG.Canvas({ width: size, height: size });
-  const icon = drawIcon(TVG, size, options);
-  if (options?.round) icon.clip(new TVG.Shape().appendCircle(size / 2, size / 2, size / 2, size / 2));
-  canvas.add(icon).render();
+function save(file: string, width: number, height: number, paint: Paint) {
+  const canvas = new TVG.Canvas({ width, height });
+  canvas.add(paint).render();
   const path = join(root, file);
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, canvas.toBufferSync('png'));
   canvas.destroy();
 }
 
+function png(file: string, size: number, options?: IconOptions & { round?: boolean }) {
+  const icon = drawIcon(TVG, size, options);
+  if (options?.round) icon.clip(new TVG.Shape().appendCircle(size / 2, size / 2, size / 2, size / 2));
+  save(file, size, size, icon);
+}
+
 // Web
 png('apps/web/public/favicon.png', 64, { sky: false, sun: 0.88 });
 png('apps/web/public/apple-touch-icon.png', 180);
+png('apps/web/public/icon-512.png', 512);
+save('apps/web/public/og.png', 1200, 630, drawCard(TVG, 1200, 630));
 
 // iOS: one 1024 image, Xcode derives the rest.
 png('apps/mobile/ios/CosmoMerge/Images.xcassets/AppIcon.appiconset/icon-1024.png', 1024);

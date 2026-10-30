@@ -1,5 +1,5 @@
-import { Button, Ease, Label, Node, rgba, type Engine, type LabelOptions, type Rect, type Screen } from '@cosmo-merge/engine';
-import { FONT_NAME } from './assets/font';
+import { Button, Ease, Label, Node, decodeBase64, rgba, type Engine, type LabelOptions, type Rect, type Screen, type TVG } from '@cosmo-merge/engine';
+import { FONT_BASE64, FONT_NAME } from './assets/font';
 import { PlanetFactory } from './planets';
 
 export const FONT = FONT_NAME;
@@ -10,6 +10,14 @@ export const screens = {} as Record<'title' | 'play', () => Screen>;
 
 /** Autoplay drops planets by itself and restarts after game over. Used for demos and benchmarks. */
 export const settings = { autoplay: false };
+
+const fontsLoaded = new WeakSet<object>();
+
+export function loadFont(TVG: TVG): void {
+  if (fontsLoaded.has(TVG.Font)) return;
+  TVG.Font.load(FONT_NAME, decodeBase64(FONT_BASE64), { type: 'ttf' });
+  fontsLoaded.add(TVG.Font);
+}
 
 const factories = new WeakMap<Engine, PlanetFactory>();
 
