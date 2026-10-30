@@ -5,6 +5,7 @@ import { screens, settings } from './shared';
 import { TitleScreen } from './title';
 
 export { TIERS } from './planets';
+export { drawIcon, type IconOptions } from './icon';
 
 screens.title = () => new TitleScreen();
 screens.play = () => new PlayScreen();

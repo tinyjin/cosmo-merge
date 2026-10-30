@@ -4,7 +4,7 @@ import { dirname, join } from 'node:path';
 import sdl from '@kmamal/sdl';
 import { init } from 'thorvg-canvas';
 import type { Host } from '@cosmo-merge/engine';
-import { startCosmoMerge } from '@cosmo-merge/game';
+import { drawIcon, startCosmoMerge } from '@cosmo-merge/game';
 
 // Native desktop host: thorvg-canvas (ThorVG over Node-API, sw) drawn into an SDL window. No browser engine.
 const autoplay = process.argv.includes('--autoplay');
@@ -13,6 +13,14 @@ const window = sdl.video.createWindow({ title: 'Cosmo Merge', width: 405, height
 const pixelRatio = window.pixelWidth / window.width;
 
 const TVG = await init({ threads: 4 });
+
+{
+  const icon = new TVG.Canvas({ width: 256, height: 256 });
+  const { data, width, height } = icon.add(drawIcon(TVG, 256, { tile: process.platform === 'darwin' })).render().getImageData();
+  window.setIcon(width, height, width * 4, 'rgba32', Buffer.from(data.buffer, data.byteOffset, data.byteLength));
+  icon.destroy();
+}
+
 const canvas = new TVG.Canvas({ width: window.width, height: window.height, pixelRatio });
 
 // Present only the frames the engine actually rendered.

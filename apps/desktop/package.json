@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "esbuild src/main.ts --bundle --platform=node --format=esm --target=node20 --external:thorvg-canvas --external:@kmamal/sdl --outfile=dist/main.js",
-    "start": "yarn build && node dist/main.js"
+    "start": "yarn build && node dist/main.js",
+    "icons": "esbuild src/icons.ts --bundle --platform=node --format=esm --target=node20 --external:thorvg-canvas --external:@kmamal/sdl --outfile=dist/icons.js && node dist/icons.js"
   },
   "dependencies": {
     "@cosmo-merge/engine": "workspace:*",

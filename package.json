@@ -13,6 +13,7 @@
     "ios": "yarn workspace @cosmo-merge/mobile ios",
     "android": "yarn workspace @cosmo-merge/mobile android",
     "desktop": "yarn workspace @cosmo-merge/desktop start",
+    "icons": "yarn workspace @cosmo-merge/desktop icons",
     "typecheck": "tsc -p packages/engine && tsc -p packages/game && tsc -p apps/web && tsc -p apps/mobile && tsc -p apps/desktop"
   },
   "packageManager": "yarn@4.18.1",
